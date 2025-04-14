@@ -7,9 +7,9 @@
 	"paths": {
 		"/get_package": {
 			"get": {
-				"summary": "Get Product",
+				"summary": "Get Package",
 				"description": "This endpoint receives a package data and returns a response.",
-				"operationId": "get_product_get_package_get",
+				"operationId": "get_package_get_package_get",
 				"parameters": [
 					{
 						"name": "package",
