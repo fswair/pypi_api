@@ -42,7 +42,7 @@ async def retrieve_url(url: str, headers: dict = {}):
 @app.get("/get_package")
 async def get_product(package: str, version: str = None):
     """
-    This endpoint receives a product name and returns a response.
+    This endpoint receives a package data and returns a response.
     """
     package = package if not version else f"{package}/{version}"
     package_url = f"https://pypi.org/pypi/{package}/json"
