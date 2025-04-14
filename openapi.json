@@ -1,162 +1,161 @@
 {
-"openapi": "3.1.0",
-"info": {
-"title": "FastAPI",
-"version": "0.1.0"
-},
-"paths": {
-"/get_package": {
-"get": {
-"summary": "Get Product",
-"description": "This endpoint receives a package data and returns a response.",
-"operationId": "get_product_get_package_get",
-"parameters": [
-{
-"name": "package",
-"in": "query",
-"required": true,
-"schema": {
-"type": "string",
-"title": "Package"
+	"openapi": "3.1.0",
+	"info": {
+		"title": "FastAPI",
+		"version": "0.1.0"
+	},
+	"paths": {
+		"/get_package": {
+			"get": {
+				"summary": "Get Product",
+				"description": "This endpoint receives a package data and returns a response.",
+				"operationId": "get_product_get_package_get",
+				"parameters": [
+					{
+						"name": "package",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"title": "Package"
+						}
+					},
+					{
+						"name": "version",
+						"in": "query",
+						"required": false,
+						"schema": {
+							"type": "string",
+							"title": "Version"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/get_package_binaries": {
+			"get": {
+				"summary": "Get Package Binaries",
+				"description": "This endpoint receives a package name and returns a response.",
+				"operationId": "get_package_binaries_get_package_binaries_get",
+				"parameters": [
+					{
+						"name": "package",
+						"in": "query",
+						"required": true,
+						"schema": {
+							"type": "string",
+							"title": "Package"
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					},
+					"422": {
+						"description": "Validation Error",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/HTTPValidationError"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/get_pypi_stats": {
+			"get": {
+				"summary": "Get Pypi Stats",
+				"description": "This endpoint receives a package name and returns a response.",
+				"operationId": "get_pypi_stats_get_pypi_stats_get",
+				"responses": {
+					"200": {
+						"description": "Successful Response",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"schemas": {
+			"HTTPValidationError": {
+				"properties": {
+					"detail": {
+						"items": {
+							"$ref": "#/components/schemas/ValidationError"
+						},
+						"type": "array",
+						"title": "Detail"
+					}
+				},
+				"type": "object",
+				"title": "HTTPValidationError"
+			},
+			"ValidationError": {
+				"properties": {
+					"loc": {
+						"items": {
+							"anyOf": [
+								{
+									"type": "string"
+								},
+								{
+									"type": "integer"
+								}
+							]
+						},
+						"type": "array",
+						"title": "Location"
+					},
+					"msg": {
+						"type": "string",
+						"title": "Message"
+					},
+					"type": {
+						"type": "string",
+						"title": "Error Type"
+					}
+				},
+				"type": "object",
+				"required": [
+					"loc",
+					"msg",
+					"type"
+				],
+				"title": "ValidationError"
+			}
+		}
+	}
 }
-},
-{
-"name": "version",
-"in": "query",
-"required": false,
-"schema": {
-"type": "string",
-"title": "Version"
-}
-}
-],
-"responses": {
-"200": {
-"description": "Successful Response",
-"content": {
-"application/json": {
-"schema": {}
-}
-}
-},
-"422": {
-"description": "Validation Error",
-"content": {
-"application/json": {
-"schema": {
-"$ref": "#/components/schemas/HTTPValidationError"
-}
-}
-}
-}
-}
-}
-},
-"/get_package_binaries": {
-"get": {
-"summary": "Get Package Binaries",
-"description": "This endpoint receives a package name and returns a response.",
-"operationId": "get_package_binaries_get_package_binaries_get",
-"parameters": [
-{
-"name": "package",
-"in": "query",
-"required": true,
-"schema": {
-"type": "string",
-"title": "Package"
-}
-}
-],
-"responses": {
-"200": {
-"description": "Successful Response",
-"content": {
-"application/json": {
-"schema": {}
-}
-}
-},
-"422": {
-"description": "Validation Error",
-"content": {
-"application/json": {
-"schema": {
-"$ref": "#/components/schemas/HTTPValidationError"
-}
-}
-}
-}
-}
-}
-},
-"/get_pypi_stats": {
-"get": {
-"summary": "Get Pypi Stats",
-"description": "This endpoint receives a package name and returns a response.",
-"operationId": "get_pypi_stats_get_pypi_stats_get",
-"responses": {
-"200": {
-"description": "Successful Response",
-"content": {
-"application/json": {
-"schema": {}
-}
-}
-}
-}
-}
-}
-},
-"components": {
-"schemas": {
-"HTTPValidationError": {
-"properties": {
-"detail": {
-"items": {
-"$ref": "#/components/schemas/ValidationError"
-},
-"type": "array",
-"title": "Detail"
-}
-},
-"type": "object",
-"title": "HTTPValidationError"
-},
-"ValidationError": {
-"properties": {
-"loc": {
-"items": {
-"anyOf": [
-{
-"type": "string"
-},
-{
-"type": "integer"
-}
-]
-},
-"type": "array",
-"title": "Location"
-},
-"msg": {
-"type": "string",
-"title": "Message"
-},
-"type": {
-"type": "string",
-"title": "Error Type"
-}
-},
-"type": "object",
-"required": [
-"loc",
-"msg",
-"type"
-],
-"title": "ValidationError"
-}
-}
-}
-}
-Açıklama
