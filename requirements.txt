@@ -1,0 +1,3 @@
+fastapi
+user-agent
+aiohttp
