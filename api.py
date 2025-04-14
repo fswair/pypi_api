@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import user_agent
+import aiohttp
 
 app = FastAPI()
 
@@ -16,7 +17,6 @@ async def retrieve_url(url: str, headers: dict = {}):
     """
     This function retrieves the content from the given URL.
     """
-    import aiohttp
     async with aiohttp.ClientSession() as session:
         _headers = {
             "Host": "pypi.org",
