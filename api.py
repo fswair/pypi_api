@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 import user_agent
 import aiohttp
 
@@ -38,6 +39,14 @@ async def retrieve_url(url: str, headers: dict = {}):
             if response.status != 200:
                 raise Exception({"error": "Failed to retrieve content from the URL"})
             return await response.json()
+
+@app.get("/")
+async def home():
+    return RedirectResponse("https://rapidapi.com/domainfinderapi/api/pypi-metadata-retriever")
+
+@app.get("/ping")
+async def ping():
+    return {"ping": "pong"}
 
 @app.get("/get_package")
 async def get_product(package: str, version: str = None):
